@@ -21,7 +21,6 @@ const Router = () => {
     return(
         <BrowserRouter>
             <Switch>
-                {/*login*/ }
                 <Route exact path={'/login'}>
                     <LoginPage/>
                 </Route>
@@ -30,7 +29,7 @@ const Router = () => {
                     <SignupPage/>
                 </Route>
 
-                <Route exact path={'/inicio'}>
+                <Route exact path={'/'}>
                     <InicioPage/>
                 </Route>  
 
