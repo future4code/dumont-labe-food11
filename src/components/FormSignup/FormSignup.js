@@ -187,7 +187,7 @@ const FormSignup = () => {
             }
             labelWidth={70}
           />
-          {confirm ? <Alert severity="error">Senha não confere</Alert> : ''}
+          {confirm ? '' : <Alert severity="error">Senha não confere</Alert>}
 
 		        <ButtonForm variant="contained" color="primary" type="submit">
 				  Criar
