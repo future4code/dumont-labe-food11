@@ -4,7 +4,7 @@ import './InicioPag.css';
 const InicioPage = () => {
     return (
         <div>
-            <img src="../../imagens" alt="logo"/> 
+            <img src="../../logo.svg" alt="logo"/> 
         </div>
     );
 }
