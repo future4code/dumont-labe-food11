@@ -1,7 +1,7 @@
 import React from 'react';
-import {  Switch, Route, BrowserRouter } from 'react-router-dom';
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import LoginPage from '../screens/login/LoginPage'
-import signupPage from '../screens/login/signupPage'
+import SignupPage from '../screens/login/SignupPage'
 import InicioPage from '../screens/login/InicioPage'
 import EnderecoPage from '../screens/login/EnderecoPage'
 import Feed from '../screens/HomeScreens/Feed'
@@ -27,7 +27,7 @@ const Router = () => {
                 </Route>
 
                 <Route exact path={'/signup'}>
-                    <signupPage/>
+                    <SignupPage/>
                 </Route>
 
                 <Route exact path={'/inicio'}>
