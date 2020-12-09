@@ -1,10 +1,12 @@
 import React from 'react';
 import {TextField,Button,InputLabel,OutlinedInput,InputAdornment,IconButton} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {DivInput,Title,ButtonForm,InputPassword,LabelInput} from './StyledFormSignup'
+import {DivInput,LogoImg,Title,FormSignupContent,ButtonForm,InputPassword,ContainerForm,LabelInput} from './StyledFormSignup'
 import useInput from '../../hooks/useInput'
+import Logo from '../../assets/LogoGrande.png'
 
 const useStyles = makeStyles((theme) => ({
+  const classes = useStyles();
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
@@ -12,21 +14,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+ const handleClickShowPassword = () => {
+  const [name,onChangeName] = useInput()
+  const [password,onChangePassword] = useInput()
 
-const FormSignup = () => {
-  const [values, setValues] = React.useState({
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
-    showPassword: false,
-  });
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
@@ -34,17 +25,16 @@ const FormSignup = () => {
     event.preventDefault();
   };
 
-	const classes = useStyles();
-	const [name,onChangeName] = useInput()
+	
 
 	const clear = (event) => {
 		event.target.value = ''
 	}
     return(
-        <div>
-        	<img src='' alt="FutureEats"/>
+        <ContainerForm>
+        	<LogoImg src={Logo} alt="FutureEats"/>
             <Title>Cadastrar</Title>
-            <form className={classes.root} noValidate autoComplete="off">
+            <FormSignupContent className={classes.root} noValidate autoComplete="off">
             	<DivInput
 		          required
 		          id="outlined-required"
@@ -80,9 +70,9 @@ const FormSignup = () => {
           <InputPassword
             id="outlined-adornment-password"
             type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
+            value={password}
             placeholder="Minimo 6 caracteres"
-            onChange={handleChange('password')}
+            onChange={onChangePassword}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -101,9 +91,9 @@ const FormSignup = () => {
           <InputPassword
             id="outlined-adornment-password"
             type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
+            value={password}
             placeholder="Confirme a senha anterior"
-            onChange={handleChange('password')}
+            onChange={onChangePassword}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -122,8 +112,8 @@ const FormSignup = () => {
 		        <ButtonForm variant="contained" color="primary">
 				  Criar
 				</ButtonForm>
-            </form>
-        </div>
+            </FormSignupContent>
+        </ContainerForm>
     )
 }
 
