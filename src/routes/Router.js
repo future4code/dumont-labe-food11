@@ -14,6 +14,8 @@ import EditarEndereco from '../screens/perfil/EditarEndereco'
 import Restaurante from '../screens/restaurante/Restaurante'
 import Carrinho from '../screens/carrinho/Carrinho'
 import CarrinhoVazio from '../screens/carrinho/CarrinhoVazio'
+import Footer from '../components/Footer/Footer'
+import Header from '../components/Header/Header'
 
 
 
@@ -26,6 +28,7 @@ const Router = () => {
                 </Route>
 
                 <Route exact path={'/signup'}>
+                    <Header/>
                     <SignupPage/>
                 </Route>
 
@@ -34,55 +37,70 @@ const Router = () => {
                 </Route>  
 
                 <Route exact path={'/endereco'}>
-                    <EnderecoPage/>
+                    <Header title="Meu Endereço"/>
+                    <Footer/>
                 </Route>
 
                 {/*HomeScreens */}
 
                 <Route exact path={'/feed'}>
+                    <Header title="FutureEats"/>
                     <Feed/>
+                    <Footer/>
                 </Route>
 
                 <Route exact path={'/sem-resultado'}>
+                    <Header title="Busca"/>
                     <noResults/>
+                    <Footer/>
                 </Route>
 
                 <Route exact path={'/surch-results'}>
+                    <Header title="Busca"/>
                     <SurchNoResults/>
+                    <Footer/>
                 </Route>
 
                 <Route exact path={'/resultado'}>
+                    <Header title="Busca"/>
                     <SurchResults/>
+                    <Footer/>
                 </Route>
 
                 {/*perfil*/}
 
                 <Route exact path={'/perfil'}>
+                    <Header title="Meu Perfil"/>
                     <Perfil/>
+                    <Footer/>
                 </Route>
 
                 <Route exact path={'/editar-cadastro'}>
+                    <Header title="Editar"/>
                     <EditarCadastro/>
+                    <Footer/>
                 </Route>
 
-                <Route exact path={'/editar-endereco'}>
-                    <EditarEndereco/>
-                </Route>
-
-                {/*restaurante */}
+               {/*restaurante */}
 
                 <Route exact path={'/resteurante'}>
+                    <Header title="Restaurante"/>
                     <Restaurante/>
+                    <Footer/>
                 </Route>
 
                 {/*carrinho */}
 
                 <Route exact path={'/carrinho'}>
+                    <Header title="Meu Carrinho"/>
                     <Carrinho/>
+                    <Footer/>
                 </Route>
 
                 <Route exact path={'/carrinho-vazio'}>
+                    <Header title="Meu Carrinho"/>
                     <CarrinhoVazio/>
+                    <Footer/>
                 </Route>
 
                 
