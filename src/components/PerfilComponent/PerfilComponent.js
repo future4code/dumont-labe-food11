@@ -4,37 +4,11 @@ import {ContainerPerfilComponent,TitleOrderHistoryComponent} from './StyledPerfi
 import UserAdress from './UserAdress'
 import OrderHistory from './OrderHistory'
 import axios from 'axios'
+import useGetProfile from '../../hooks/useGetProfile'
 
 const PerfilComponent = () => {
-	const data = JSON.parse(localStorage.getItem('user'))
-	const token = data.token
-	const [ user,setUser ] = useState({})
-	const [cpf,setCpf] = useState('')
+	const [user,cpf,tokenRequest] = useGetProfile()
 
-	useEffect(() => {
-		
-		axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile',{
-			headers:{
-				auth: token
-			}
-		})
-		.then((res) => {
-			setUser(res.data.user)
-			let valueCpf = res.data.user.cpf
-			valueCpf = valueCpf.replace(/\D/g,"")
-			valueCpf = valueCpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/,"$1.$2.$3-$4")
-			setCpf(valueCpf)
-			console.log(res.data)
-		})
-		.catch((err) => {
-			console.log(err)
-		})
-	},[])
-
-	
-	
-
-		
 	return(
 		<ContainerPerfilComponent>
 			<UserData 
@@ -45,12 +19,11 @@ const PerfilComponent = () => {
 			<UserAdress
 				hasAddress={user.hasAddress}
 				id={user.id}
-				token={token}
+				token={tokenRequest}
 			/>
 			<div>
 				<TitleOrderHistoryComponent>Historico de Pedidos</TitleOrderHistoryComponent>
 				<OrderHistory
-					token={token}
 				/>
 			</div>
 		</ContainerPerfilComponent>

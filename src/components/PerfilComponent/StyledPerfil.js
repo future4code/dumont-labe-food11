@@ -39,8 +39,8 @@ export const ButtonEditar = styled.button`
 export const TextUserData = styled.p`
 	font-weight:400;
 	color:#000 ;
-	font-size:20px;
-	line-height:10px;
+	font-size:18px;
+	line-height:18px;
 `
 export const TitleUserData = styled.h2`
 	font-weight:500;

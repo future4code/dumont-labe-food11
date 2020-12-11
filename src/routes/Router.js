@@ -3,7 +3,6 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import LoginPage from '../screens/login/LoginPage'
 import SignupPage from '../screens/login/SignupPage'
 import InicioPage from '../screens/login/InicioPage'
-import EnderecoPage from '../screens/login/EnderecoPage'
 import Feed from '../screens/HomeScreens/Feed'
 import noResults from '../screens/HomeScreens/noResults'
 import SurchNoResults from '../screens/HomeScreens/SurchNoResults'
@@ -11,6 +10,7 @@ import SurchResults from '../screens/HomeScreens/SurchResults'
 import Perfil from '../screens/perfil/Perfil'
 import EditarCadastro from '../screens/perfil/EditarCadastro'
 import EditarEndereco from '../screens/perfil/EditarEndereco'
+import EnderecoPage from '../screens/login/EnderecoPage'
 import Restaurante from '../screens/restaurante/Restaurante'
 import Carrinho from '../screens/carrinho/Carrinho'
 import CarrinhoVazio from '../screens/carrinho/CarrinhoVazio'
@@ -37,7 +37,13 @@ const Router = () => {
                 </Route>  
 
                 <Route exact path={'/endereco'}>
-                    <Header title="Meu Endereço"/>
+                    <Header/>
+                    <EnderecoPage/>
+                    <Footer/>
+                </Route>
+                <Route exact path={'/editar-endereco'}>
+                    <Header title="Editar"/>
+                    <EditarEndereco/>
                     <Footer/>
                 </Route>
 

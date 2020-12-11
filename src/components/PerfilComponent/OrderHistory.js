@@ -7,15 +7,16 @@ const OrderHistory = (props) => {
 
 
 	useEffect(() => {
-		axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/orders/history',{
+		/* axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/orders/history',{
 			headers:{
 				auth: props.token
 			}
 		})
 		.then((res) => {
-
+			console.log(res.data)
 		})
-		.catch((err) => {})
+		.catch((err) => {
+		}) */
 
 	})
 	return(

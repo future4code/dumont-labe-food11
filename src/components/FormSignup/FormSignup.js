@@ -77,7 +77,7 @@ const FormSignup = () => {
           Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: `Houve um erro `
+              text: `Houve um erro verifique os dados preenchidos ! `
             })
         })
       }else{
