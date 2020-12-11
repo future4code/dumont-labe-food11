@@ -1,10 +1,9 @@
 import React from 'react'
+import PerfilComponent from '../../components/PerfilComponent/PerfilComponent'
 
 const Perfil = () => {
     return(
-        <div>
-            Perfil
-        </div>
+       <PerfilComponent/>
     )
 }
 export default Perfil;
