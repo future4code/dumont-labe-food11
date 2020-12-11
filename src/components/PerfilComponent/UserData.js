@@ -1,8 +1,13 @@
 import React from 'react'
 import {ContainerPerfil,ButtonEditar,TextUserData} from './StyledPerfil'
 import CreateIcon from '@material-ui/icons/Create';
+import {useHistory} from 'react-router-dom'
 
 const UserData = (props) => {
+	const history = useHistory()
+	const editProfile = () => {
+		history.push('/editar-cadastro')
+	}
 	return(
 		<ContainerPerfil>
 			<div>
@@ -10,7 +15,7 @@ const UserData = (props) => {
 				<TextUserData>{props.email}</TextUserData>
 				<TextUserData>{props.cpf}</TextUserData>
 			</div>
-			<ButtonEditar><CreateIcon/></ButtonEditar>
+			<ButtonEditar onClick={editProfile}><CreateIcon/></ButtonEditar>
 		</ContainerPerfil>
 		)
 }
