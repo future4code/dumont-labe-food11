@@ -47,6 +47,7 @@ const LoginPage = () => {
           alert("tente novamente")
           console.error(error);
       }
+  
   }
 
     return(

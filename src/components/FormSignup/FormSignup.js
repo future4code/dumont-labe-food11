@@ -70,7 +70,7 @@ const FormSignup = () => {
               showConfirmButton: false,
               timer: 2000
             })
-            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user', JSON. stringify(res.data))
             hitory.push('/feed')         
         })
         .catch((err) => {

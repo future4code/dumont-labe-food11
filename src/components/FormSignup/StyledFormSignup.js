@@ -4,8 +4,9 @@ import {TextField,Button,OutlinedInput,InputLabel} from '@material-ui/core';
 export const ContainerForm = styled.section`
 	display:flex;
 	align-items:center;
+	justify-content:center;
 	flex-direction:column;
-	height:100%;
+	height:calc(100vh - 40px);
 `;
 export const LogoImg = styled.img`
 	display:block;
