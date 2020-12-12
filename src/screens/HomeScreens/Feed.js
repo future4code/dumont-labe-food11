@@ -3,28 +3,46 @@ import axios from 'axios'
 import styled from 'styled-components'
 import {TextField} from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
+import {useHistory} from 'react-router-dom'
 
 
 export default function Feed() {
-
+    const history = useHistory()
+    const data = JSON.parse(localStorage.getItem('user'))
     const [restaurants, setRestaurants] = useState([]);
+    const [category,setCategory] = useState()
 
-    const getRestaurants = () => {
-        const token = null
+    useEffect(() => {
+        if(data){
+            console.log(data.token)
+             if(data.user.hasAddress === true){
+                    axios.get("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants", {
+                         headers: {
+                               auth: data.token
+                    }})
+                    .then((res) => {
+                        console.log(res.data)
+                        setRestaurants(res.data.restaurants)
+                    })
+                    .catch((err) => {
+                        console.log(err.message)
+                    })
+            }else{
 
-        axios.get("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants", {
-        headers: {
-            Authorization: token
-        }})
-        .then((res) => {
-            console.log(res.data)
-        })
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }
+                        history.push('/endereco')
+                }
+                    
+         }else{
+            history.push('/login')
+        }
+        
 
+    },[])
 
+const searchCategory = (cat) => {
+    console.log(cat)
+    setCategory(cat)
+}
 
     return (
         <Container>
@@ -39,20 +57,43 @@ export default function Feed() {
             />
             </SearchBarContainer>
             <Filter>
-                <li>Burguer</li>
-                <li>Asiática</li>
-                <li>Massas</li>
-                <li>Saudáveis</li>
-            </Filter>
+                {restaurants != undefined ?  
+                   restaurants.map(restaurant => {
+                    return(
+                                <li onClick={() => searchCategory(restaurant.category)}>{restaurant.category}</li>
+                         
+                        )
+                   }) 
 
-            <CardContainer>
-                <img src='https://picsum.photos/200/150/'/>
-                <CardInfo>
-                    <h4 className='product-name'>Nome do produto</h4>
-                    <p className='estimated-time'>Tempo estimado</p>
-                    <p className="fee">Frete 10,00</p>
-                </CardInfo>
-            </CardContainer>
+               : 'carregando...'}
+              </Filter>
+            
+            {restaurants != undefined ?  
+                restaurants.map((restaurant) => {
+                    if(category === restaurant.category){
+                    return(
+                            <CardContainer>
+                                <img src={restaurant.logoUrl}/>
+                                <CardInfo>
+                                    <h4 className='product-name'>{restaurant.name}</h4>
+                                    <p className='estimated-time'>{restaurant.deliveryTime} - {restaurant.deliveryTime + 15} min</p>
+                                    <p className="fee">Frete R${restaurant.shipping},00</p>
+                                </CardInfo>
+                            </CardContainer>
+                        )
+                        }else{
+                            <CardContainer>
+                                <img src={restaurant.logoUrl}/>
+                                <CardInfo>
+                                    <h4 className='product-name'>{restaurant.name}</h4>
+                                    <p className='estimated-time'>{restaurant.deliveryTime} - {restaurant.deliveryTime + 15} min</p>
+                                    <p className="fee">Frete R${restaurant.shipping},00</p>
+                                </CardInfo>
+                            </CardContainer>
+                        }
+                })
+
+            : 'Carregando...'}
             
         </Container>
     )
