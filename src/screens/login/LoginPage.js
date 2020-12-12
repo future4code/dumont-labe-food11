@@ -3,8 +3,10 @@ import axios from 'axios';
 import baseUrl from '../../constants/baseUrl'
 import {TextField, Button, AppBar} from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import { FormContainer, LoginPageContainer, Img } from './styles';
+import { FormContainer,TextInputs, LoginPageContainer, Img } from './styles';
 import logo from '../../assets/logo.png'
+import Swal from 'sweetalert2';
+
 
 
 const LoginPage = () => {
@@ -27,26 +29,26 @@ const LoginPage = () => {
       setPassword(newPassword);
   }
  
-  const handleLogin = async (event) => {
-      event.preventDefault();
+  const handleLogin = (event) => {
       const body = {
           email: email,
           password: password,
       }
+      axios.post(`https://us-central1-missao-newton.cloudfunctions.net/FutureEatsA/login`, body)
+      .then((res) => {
+        localStorage.setItem("user", res.data );
+         history.push("/feed")
 
-      try{
-
-     const response = await axios.post(`${baseUrl}/login`, body);
-    
-
-     localStorage.setItem("token", response.data.token );
-     
-     history.push("/feed")
-
-      }catch(error){
-          alert("tente novamente")
-          console.error(error);
-      }
+      })
+      .catch((error) => {
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `Houve um erro verifique os dados preenchidos ! `
+            })
+          console.log(error.message);
+      }) 
+      event.preventDefault();   
   
   }
 
@@ -56,7 +58,7 @@ const LoginPage = () => {
             
             <Img src={logo.png} />
             <FormContainer onSubmit={handleLogin} >
-                <TextField 
+                <TextInputs 
                     label="E-mail"
                     variant="outlined"
                     type="email"
@@ -65,7 +67,7 @@ const LoginPage = () => {
                     value={email}
                    
                 />
-                <TextField  
+                <TextInputs  
                     label="Senha"
                     variant="outlined"                
                     type="password"

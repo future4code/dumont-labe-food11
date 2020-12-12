@@ -7,13 +7,13 @@ import Swal from 'sweetalert2';
 import useGetProfile from '../../hooks/useGetProfile'
 
 const EditarCadastro = () => {
-	const [userRequest,cpfRequest,tokenRequest] = useGetProfile()
-	const nameRequest = userRequest ? userRequest.name : 'Teste'
+	const data = JSON.parse(localStorage.getItem('user'))
+	const user = data.user
+	const token = data.token
 	const history = useHistory()
-	const [name,onChangeName] = useInput(nameRequest)
-	const [email,onChangeEmail] = useInput(userRequest.email)
-	const [regexValue,setRegexValue] = useState(cpfRequest.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/,"$1.$2.$3-$4"))
-	const [cpf,onChangeCpf] = useInput(regexValue)
+	const [name,onChangeName] = useInput(user.name)
+	const [email,onChangeEmail] = useInput(user.email)
+	const [cpf,onChangeCpf] = useInput(user.cpf)
 
 	
 	const saveProfile = (event) =>{
@@ -26,7 +26,7 @@ const EditarCadastro = () => {
 						}
 		axios.put('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile',body,{
 			headers:{
-				auth:tokenRequest
+				auth:token
 			}
 		})
 		.then((res) => {
@@ -37,6 +37,12 @@ const EditarCadastro = () => {
               showConfirmButton: false,
               timer: 2000
             })
+            
+            const userData = {
+            	token:token,
+            	user: res.data
+            }
+            localStorage.setItem('user',JSON.stringify(userData))
             history.push('/perfil')
             
 		})
@@ -46,6 +52,7 @@ const EditarCadastro = () => {
               title: 'Oops...',
               text: `Verifique se os dados foram preenchidos corretamente!`
             })
+            console.log(err.message)
 
 		})
 		}else{
@@ -63,7 +70,6 @@ const EditarCadastro = () => {
 	    let valueCpf = event.target.value
 	    valueCpf = valueCpf.replace(/\D/g,"")
 	    valueCpf = valueCpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/,"$1.$2.$3-$4")
-	    setRegexValue(valueCpf)
 	    event.target.value = valueCpf
  	 }
     return(
