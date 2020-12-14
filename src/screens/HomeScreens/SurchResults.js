@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { baseUrl } from '../../constants/baseUrl';
 import './SurchResults.css';
 import '../../assets/back.svg';
 import  { CardInfo } from '../../components/FormSignup/CardInfo'
