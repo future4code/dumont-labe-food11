@@ -7,10 +7,6 @@ function App() {
     <div >
       <Router/>
     </div>
-
-    /*<div>
-      <SurchResults/>
-    </div>*/
   );
 }
 
