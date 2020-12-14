@@ -1,12 +1,31 @@
-import react from 'react'
 import styled from 'styled-components'
 import {TextField,Button,OutlinedInput,InputLabel} from '@material-ui/core';
 
+export const ContainerForm = styled.section`
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	height:calc(100vh - 40px);
+`;
+export const LogoImg = styled.img`
+	display:block;
+	margin:10px auto 0;
+	width:30%;
+	height:auto;
+`;
+export const FormSignupContent = styled.form`
+	display:flex;
+	align-items:center;
+	flex-direction:column;
+	width:100%;
+`;
 export const DivInput = styled(TextField)`
 	input{
 		color:rgb(133, 133, 133);
 	}
 `;
+
 export const Title = styled.h2`
 	font-size:20px;
 	text-align:center;
@@ -25,13 +44,9 @@ export const InputPassword = styled(OutlinedInput)`
 	margin-bottom: 10px !important;
 `;
 export const LabelInput = styled(InputLabel)`
-	text-align:left !important;
-	width:70px !important;
-	margin:10px 0 -7px 7% !important;
-	background-color:#fff !important;
 	position:relative !important;
-	padding-left:10px !important;
-	opacity:1 !important;
-	font-size:14px !important;
+	margin:10px auto -10px 7% !important;
+	background:#fff !important;
 	z-index:9999 !important;
+	padding:0 10px !important;
 `;

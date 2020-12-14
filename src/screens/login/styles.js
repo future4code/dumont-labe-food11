@@ -1,23 +1,29 @@
 import styled from "styled-components"
+import {TextField, Button, AppBar} from '@material-ui/core';
 
 export const LoginPageContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 60vw;
-    width: 60vw;
-    max-width: 460px;
-    margin: 0 auto;
+    justify-content:center;
+    align-items:center;
+    height: 100vh;
+    width: 100vw;
 `
 
 export const FormContainer = styled.form`
-      display: flex;
+    display: flex;
     flex-direction: column;
-    height: 30vh;
-    justify-content: space-around;
+    width:90%;
+    height:100%;
+    justify-content: center;
+    align-items:center;
 `
 
 export const Img = styled.img`
     margin-top: 50px;
     height: 80px;
     padding: 40px;
+`
+export const TextInputs = styled(TextField)`
+    margin:10px 0;
 `
