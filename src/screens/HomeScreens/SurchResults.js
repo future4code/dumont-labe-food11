@@ -1,8 +1,9 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import { baseUrl } from '../../constants/baseUrl';
 import './SurchResults.css';
 import '../../assets/back.svg';
-import  { SurchResults } from '../../components/SurchResults'
+import  { CardInfo } from '../../components/FormSignup/CardInfo'
 
 const SurchResults = () => {
     return(
@@ -15,11 +16,11 @@ const SurchResults = () => {
             <main>
                 <input type="text" placeholder="               Restaurante"/>
                 <article>
-                     <SurchResults
-                        searchImg={}
-                        title={}
-                        time={}
-                        price={}
+                     <CardInfo
+                        searchImg={'https://picsum.photos/200/150/'}
+                        title={'Nome do produto'}
+                        time={'tempo estimado'}
+                        price={'frete do produto'}
                      />
                 </article>
             </main>

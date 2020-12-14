@@ -15,6 +15,7 @@ header {
     display: flex;
     margin: 10px 0 0;
     padding: 0;
+    border-bottom: 1px solid #b8b8b8;
 }
 
 header img {
@@ -41,4 +42,51 @@ main input {
     background-image: url(../../assets/search.svg);
     background-repeat: no-repeat;
     background-position: 17px 16px;
+}
+
+article {
+    padding: 0;
+}
+
+.CardInfo{
+    height: 188px;
+    width: 328px;
+    padding: 0;
+    margin: 8px 0;
+    border: 1px solid #b8b8b8;
+    border-radius: 0.5rem;
+
+    font-size: 0.8rem;
+}
+
+.searchImg {
+    padding: 0;
+    height: 120px;
+    width: 328px;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.title {
+    margin: 13px 16px;
+    margin-bottom: 0;
+    color: #5bb647;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.time {
+margin-bottom: 16px;
+margin-left: 16px;
+color: #b8b8b8;
+}
+
+.price {
+padding-bottom: 16px;
+margin-right: 16px;
+color: #b8b8b8;
 }
