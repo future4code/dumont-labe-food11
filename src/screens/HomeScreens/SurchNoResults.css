@@ -1,0 +1,51 @@
+* {
+    padding: 0 16px;
+}
+
+body {
+    padding: 0 ;
+}
+
+div {
+    padding: 0;
+}
+
+header {
+    height: 34px;
+    display: flex;
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+header img {
+    height: 24px;
+    width: 23px;
+    padding: 0;
+}
+
+header h3 {
+    margin: 0 119px 0 118px;
+    font-size: 16px;
+    padding: 0;
+}
+
+main {
+    padding: 0;
+}
+
+main input {
+    height: 56px;
+    width: 324px;
+    margin: 8px 0;
+    padding: 0;
+    background-image: url(../../assets/search.svg);
+    background-repeat: no-repeat;
+    background-position: 17px 16px;
+}
+
+main p {
+    padding: 12px 0;
+    text-align: center;
+    font-size: 15px;
+    
+}
